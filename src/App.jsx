@@ -1,12 +1,11 @@
-import { Login } from "./components"
+import { Button } from "./components/ui/button"
 
 const App = () => {
   return (
     <>
-    <Login />
-    <h1 className="text-red-600">KOT Frontend</h1>
+    <div>App</div>
+    <Button>Hello</Button>
     </>
   )
 }
-
 export default App
