@@ -23,15 +23,15 @@ const Login = () => {
               <Input type="password" id="password" placeholder="Password" />
             </div>
             <div className="text-right mt-2">
-              <Link to="/singup" className="text-blue-500 text-sm text-right">
+              <Link to="/singup" tabIndex={-1} className="text-blue-500 text-sm text-right">
                 Forgot Password ?
               </Link>
             </div>
 
             <Button className="mt-6">Login</Button>
             <div className="mt-3">
-              <p to="/singup" className="text-sm">
-                Already have an account ?{" "}
+              <p className="text-sm text-muted-foreground">
+                Don't have an account ?{" "}
                 <Link to="/signup" className="text-blue-500">
                   Signup
                 </Link>
