@@ -18,7 +18,7 @@ const Signup = () => {
       </div>
 
       <div className="flex-1 md:flex-[0.6] flex justify-center items-center">
-        <div className="w-full max-w-sm m-4 bg-white p-10 shadow-sm">
+        <div className="w-full max-w-md m-4 p-10 ">
           <h1 className="font-extrabold text-4xl tracking-wider text-center">
             KOT
           </h1>
@@ -31,15 +31,26 @@ const Signup = () => {
                 type="text"
                 id="username"
                 placeholder="Username"
+                className="h-11"
               />
             </div>
             <div className="w-full max-w-sm mb-6">
               <Label htmlFor="email">Username</Label>
-              <Input autoFocus type="email" id="email" placeholder="Email" />
+              <Input
+                type="email"
+                id="email"
+                placeholder="Email"
+                className="h-11"
+              />
             </div>
             <div className="w-full max-w-sm mb-6">
               <Label htmlFor="password">Password</Label>
-              <Input type="password" id="password" placeholder="Password" />
+              <Input
+                type="password"
+                id="password"
+                placeholder="Password"
+                className="h-11"
+              />
             </div>
             <div className="w-full max-w-sm">
               <Label htmlFor="confirmPassword">Confirm Password</Label>
@@ -47,10 +58,13 @@ const Signup = () => {
                 type="password"
                 id="confirmPassword"
                 placeholder="Confirm Password"
+                className="h-11"
               />
             </div>
 
-            <Button className="mt-6">Signup</Button>
+            <Button className="mt-8" size="lg">
+              Signup
+            </Button>
             <div className="mt-3">
               <p className="text-sm text-muted-foreground">
                 Already have an account ?{" "}

@@ -4,53 +4,39 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const ForgotPassword = () => {
   return (
     <div className="w-screen h-screen flex gap-2 bg-[#f8fafc]">
       <div className="flex-1 md:flex-[0.6] flex justify-center items-center">
         <div className="w-full max-w-md m-4 p-10">
-          <h1 className="font-extrabold text-4xl tracking-wider text-center">
-            KOT
+          <h1 className="font-extrabold text-2xl tracking-wider text-center">
+            Trouble Logging In ?
           </h1>
+          <p className="mt-2 text-center text-muted-foreground text-sm">
+            Enter your email and we will send you <br /> a link to get back into
+            your account
+          </p>
 
           <div className="mt-7 flex flex-col">
-            <div className="w-full  max-w-sm  mb-6">
-              <Label htmlFor="email">Username</Label>
+            <div className="w-full max-w-sm mb-6">
+              <Label htmlFor="email">Email</Label>
               <Input
                 autoFocus
                 type="email"
                 id="email"
-                placeholder="Username"
+                placeholder="Email"
                 className="h-11"
               />
             </div>
-            <div className="w-full  max-w-sm ">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                type="password"
-                id="password"
-                placeholder="Password"
-                className="h-11"
-              />
-            </div>
-            <div className="text-right mt-2">
-              <Link
-                to="/forgot-password"
-                tabIndex={-1}
-                className="text-blue-500 text-sm text-right"
-              >
-                Forgot Password ?
-              </Link>
-            </div>
-
-            <Button className="mt-6" size="lg">
-              Login
+            <Button size="lg" className="mt-4">
+              Reset Password
             </Button>
+
             <div className="mt-3">
-              <p className="text-sm text-muted-foreground">
-                Don't have an account ?{" "}
-                <Link to="/signup" className="text-blue-500">
-                  Signup
+              <p className="text-sm text-center text-muted-foreground">
+                Return to{" "}
+                <Link to="/" className="text-blue-500">
+                  Login
                 </Link>
               </p>
             </div>
@@ -69,4 +55,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+export default ForgotPassword;

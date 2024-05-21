@@ -1,17 +1,21 @@
 import NotFound from "@/pages/NotFound";
-import { Login, Signup } from "@/pages/auth";
+import { ForgotPassword, Login, Signup } from "@/pages/auth";
 import { createBrowserRouter } from "react-router-dom";
 
 const Router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Login />,
-        errorElement: <NotFound />
-      },
-      {
-        path: "/signup",
-        element: <Signup />,
-      },
-])
+  {
+    path: "/",
+    element: <Login />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
+  },
+]);
 
-export default Router
+export default Router;
