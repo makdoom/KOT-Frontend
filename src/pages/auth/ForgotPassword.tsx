@@ -31,12 +31,7 @@ const ForgotPassword = () => {
               />
             </div>
 
-
-            <Button
-            
-            
-            
-            size="lg" className="mt-4" onClick={handleResetPassword}>
+            <Button size="lg" className="mt-4" onClick={handleResetPassword}>
               Reset Password
             </Button>
 
