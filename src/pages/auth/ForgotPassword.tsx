@@ -5,6 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
 
 const ForgotPassword = () => {
+  const handleResetPassword = () => console.log("hello");
+
   return (
     <div className="w-screen h-screen flex gap-2 bg-[#f8fafc]">
       <div className="flex-1 md:flex-[0.6] flex justify-center items-center">
@@ -28,7 +30,7 @@ const ForgotPassword = () => {
                 className="h-11"
               />
             </div>
-            <Button size="lg" className="mt-4">
+            <Button size="lg" className="mt-4" onClick={handleResetPassword}>
               Reset Password
             </Button>
 
