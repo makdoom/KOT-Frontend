@@ -29,7 +29,7 @@ const Login = () => {
   return (
     <div className="w-screen h-screen flex gap-2 bg-[#f8fafc]">
       <div className="flex-1 md:flex-[0.6] flex justify-center items-center">
-        <div className="w-full max-w-md m-4 p-10">
+        <div className="w-full max-w-md m-4 p-2 md:p-10">
           <h1 className="font-extrabold text-4xl tracking-wider text-center">
             KOT
           </h1>
@@ -80,7 +80,7 @@ const Login = () => {
               <Button
                 disabled={!isDirty || !isValid || isSubmitting}
                 className="mt-6"
-                size="lg"
+                size="xl"
               >
                 Login
               </Button>
