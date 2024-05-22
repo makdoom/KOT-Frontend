@@ -42,7 +42,7 @@ const Signup = () => {
       </div>
 
       <div className="flex-1 md:flex-[0.6] flex justify-center items-center">
-        <div className="w-full max-w-md m-4 p-10 ">
+        <div className="w-full max-w-md m-4 p-2 md:p-10">
           <h1 className="font-extrabold text-4xl tracking-wider text-center">
             KOT
           </h1>
@@ -109,8 +109,8 @@ const Signup = () => {
             <Button
               disabled={!isDirty || !isValid || isSubmitting}
               type="submit"
-              className="mt-8"
-              size="lg"
+              className="mt-8 max-w-sm"
+              size="xl"
             >
               Signup
             </Button>
