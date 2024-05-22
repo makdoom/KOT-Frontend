@@ -1,10 +1,34 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import BackgroundImage from "@/assets/background.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { SignupSchema } from "@/schemas/authSchema";
+
+type SignupFormType = {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
 
 const Signup = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isDirty, isValid, isSubmitting },
+  } = useForm<SignupFormType>({
+    mode: "onBlur",
+    resolver: zodResolver(SignupSchema),
+  });
+
+  const onSubmit = (data: SignupFormType) => {
+    console.log(data);
+  };
+
   return (
     <div className="w-screen h-screen flex gap-2 bg-[#f8fafc]">
       <div className="flex-[0.4] hidden md:block">
@@ -23,7 +47,11 @@ const Signup = () => {
             KOT
           </h1>
 
-          <div className="mt-7 flex flex-col">
+          <form
+            noValidate
+            onSubmit={handleSubmit(onSubmit)}
+            className="mt-7 flex flex-col"
+          >
             <div className="w-full max-w-sm mb-6">
               <Label htmlFor="username">Username</Label>
               <Input
@@ -32,16 +60,24 @@ const Signup = () => {
                 id="username"
                 placeholder="Username"
                 className="h-11"
+                {...register("username")}
               />
+              <p className="mt-1 text-sm text-red-500">
+                {errors.username?.message}
+              </p>
             </div>
             <div className="w-full max-w-sm mb-6">
-              <Label htmlFor="email">Username</Label>
+              <Label htmlFor="email">Email</Label>
               <Input
                 type="email"
                 id="email"
                 placeholder="Email"
                 className="h-11"
+                {...register("email")}
               />
+              <p className="mt-1 text-sm text-red-500">
+                {errors.email?.message}
+              </p>
             </div>
             <div className="w-full max-w-sm mb-6">
               <Label htmlFor="password">Password</Label>
@@ -50,7 +86,11 @@ const Signup = () => {
                 id="password"
                 placeholder="Password"
                 className="h-11"
+                {...register("password")}
               />
+              <p className="mt-1 text-sm text-red-500">
+                {errors.password?.message}
+              </p>
             </div>
             <div className="w-full max-w-sm">
               <Label htmlFor="confirmPassword">Confirm Password</Label>
@@ -59,10 +99,19 @@ const Signup = () => {
                 id="confirmPassword"
                 placeholder="Confirm Password"
                 className="h-11"
+                {...register("confirmPassword")}
               />
+              <p className="mt-1 text-sm text-red-500">
+                {errors.confirmPassword?.message}
+              </p>
             </div>
 
-            <Button className="mt-8" size="lg">
+            <Button
+              disabled={!isDirty || !isValid || isSubmitting}
+              type="submit"
+              className="mt-8"
+              size="lg"
+            >
               Signup
             </Button>
             <div className="mt-3">
@@ -73,7 +122,7 @@ const Signup = () => {
                 </Link>
               </p>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
