@@ -4,6 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { LoginSchema } from "@/schemas/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -14,6 +16,7 @@ type LoginType = {
 
 const Login = () => {
   const navigate = useNavigate();
+  const [passwordInputType, setPasswordInputType] = useState("password");
   const {
     register,
     handleSubmit,
@@ -22,6 +25,11 @@ const Login = () => {
     mode: "onBlur",
     resolver: zodResolver(LoginSchema),
   });
+
+  const passwordInputToggle = () =>
+    passwordInputType === "password"
+      ? setPasswordInputType("text")
+      : setPasswordInputType("password");
 
   const onSubmit = (data: LoginType) => {
     console.log(data);
@@ -42,7 +50,7 @@ const Login = () => {
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col"
             >
-              <div className="w-full  max-w-sm  mb-6">
+              <div className="w-full max-w-sm mb-6">
                 <Label htmlFor="username">Username</Label>
                 <Input
                   autoFocus
@@ -59,10 +67,27 @@ const Login = () => {
               <div className="w-full  max-w-sm ">
                 <Label htmlFor="password">Password</Label>
                 <Input
-                  type="password"
+                  type={passwordInputType}
                   id="password"
                   placeholder="Password"
                   className="h-11"
+                  icon={{
+                    placement: "end",
+                    component:
+                      passwordInputType === "password" ? (
+                        <EyeOff
+                          size={19}
+                          className="text-muted-foreground"
+                          onClick={passwordInputToggle}
+                        />
+                      ) : (
+                        <Eye
+                          size={19}
+                          className="text-muted-foreground"
+                          onClick={passwordInputToggle}
+                        />
+                      ),
+                  }}
                   {...register("password")}
                 />
                 <p className="mt-1 text-sm text-red-500">
