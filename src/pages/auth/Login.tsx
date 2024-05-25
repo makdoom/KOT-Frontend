@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { LoginSchema } from "@/schemas/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type LoginType = {
   username: string;
@@ -13,6 +13,7 @@ type LoginType = {
 };
 
 const Login = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -24,6 +25,7 @@ const Login = () => {
 
   const onSubmit = (data: LoginType) => {
     console.log(data);
+    navigate("/dashboard");
   };
 
   return (
@@ -81,6 +83,7 @@ const Login = () => {
                 disabled={!isDirty || !isValid || isSubmitting}
                 className="mt-6"
                 size="xl"
+                type="submit"
               >
                 Login
               </Button>
