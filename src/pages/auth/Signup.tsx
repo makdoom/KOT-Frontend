@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { SignupSchema } from "@/schemas/authSchema";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 type SignupFormType = {
   username: string;
@@ -16,6 +18,10 @@ type SignupFormType = {
 };
 
 const Signup = () => {
+  const [passwordInputType, setPasswordInputType] = useState("password");
+  const [confirmPasswordInputType, setConfirmPasswordInputType] =
+    useState("password");
+
   const {
     register,
     handleSubmit,
@@ -24,6 +30,19 @@ const Signup = () => {
     mode: "onBlur",
     resolver: zodResolver(SignupSchema),
   });
+
+  const passwordInputToggle = (isPassword: boolean) => {
+    isPassword
+      ? setPasswordInputType((prev) =>
+          prev === "password" ? "text" : "password",
+        )
+      : setConfirmPasswordInputType((prev) =>
+          prev === "password" ? "text" : "password",
+        );
+  };
+  // passwordInputType === "password"
+  //   ? setPasswordInputType("text")
+  //   : setPasswordInputType("password");
 
   const onSubmit = (data: SignupFormType) => {
     console.log(data);
@@ -82,10 +101,27 @@ const Signup = () => {
             <div className="w-full max-w-sm mb-6">
               <Label htmlFor="password">Password</Label>
               <Input
-                type="password"
+                type={passwordInputType}
                 id="password"
                 placeholder="Password"
                 className="h-11"
+                icon={{
+                  placement: "end",
+                  component:
+                    passwordInputType === "password" ? (
+                      <EyeOff
+                        size={19}
+                        className="text-muted-foreground"
+                        onClick={() => passwordInputToggle(true)}
+                      />
+                    ) : (
+                      <Eye
+                        size={19}
+                        className="text-muted-foreground"
+                        onClick={() => passwordInputToggle(true)}
+                      />
+                    ),
+                }}
                 {...register("password")}
               />
               <p className="mt-1 text-sm text-red-500">
@@ -95,10 +131,27 @@ const Signup = () => {
             <div className="w-full max-w-sm">
               <Label htmlFor="confirmPassword">Confirm Password</Label>
               <Input
-                type="password"
+                type={confirmPasswordInputType}
                 id="confirmPassword"
                 placeholder="Confirm Password"
                 className="h-11"
+                icon={{
+                  placement: "end",
+                  component:
+                    confirmPasswordInputType === "password" ? (
+                      <EyeOff
+                        size={19}
+                        className="text-muted-foreground"
+                        onClick={() => passwordInputToggle(false)}
+                      />
+                    ) : (
+                      <Eye
+                        size={19}
+                        className="text-muted-foreground"
+                        onClick={() => passwordInputToggle(false)}
+                      />
+                    ),
+                }}
                 {...register("confirmPassword")}
               />
               <p className="mt-1 text-sm text-red-500">
