@@ -15,7 +15,7 @@ const Header = ({ isSidebarOpen, toggleSidebar }: HeaderPropType) => {
   const navigateToHome = () => navigate("/dashboard");
 
   return (
-    <div className="flex items-center justify-between px-3 py-2 shadow-sm">
+    <div className="flex items-center justify-between px-3 py-2 ">
       <div className="flex gap-2">
         <Button
           variant="secondary"
