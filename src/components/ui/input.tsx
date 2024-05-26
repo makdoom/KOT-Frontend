@@ -11,10 +11,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, icon, ...props }, ref) => {
     return (
       <div
-        className={`flex items-center justify-center ${icon?.component && "border focus-within:border-red-500 rounded-md"} `}
+        className={`flex items-center justify-center ${icon?.component && "border focus-within:border-primary rounded-md"} `}
       >
         {icon?.component && icon.placement == "start" && (
-          <div className="flex items-center pl-2 py-1 h-11 rounded-md rounded-tr-none rounded-br-none cursor-pointer">
+          <div className="flex items-center pl-3 py-1 h-11 rounded-md rounded-tr-none rounded-br-none cursor-pointer">
             {icon.placement === "start" && icon.component}
           </div>
         )}
@@ -30,7 +30,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {icon?.component && icon.placement && (
-          <div className="flex items-center pr-2 py-1 h-11 rounded-md rounded-tl-none rounded-bl-none cursor-pointer">
+          <div className="flex items-center pr-3 py-1 h-11 rounded-md rounded-tl-none rounded-bl-none cursor-pointer">
             {icon.placement === "end" && icon.component}
           </div>
         )}
