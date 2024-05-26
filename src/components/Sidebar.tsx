@@ -101,7 +101,9 @@ type SidebarProp = {
 const Sidebar = ({ isSidebarOpen }: SidebarProp) => {
   return (
     <div className={`${isSidebarOpen ? "block" : "hidden"}`}>
-      <h3 className="text-3xl font-bold tracking-wider text-center p-2">KOT</h3>
+      <h3 className="text-3xl font-bold tracking-wider text-center p-2 text-primary">
+        KOT
+      </h3>
 
       <div className={`my-6 ${isSidebarOpen ? "px-0" : "px-2"}`}>
         {sidebarMenuData.map((item) => (
