@@ -10,7 +10,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import DashboardLayout from "@/pages/DashboardLayout";
-import Master from "@/pages/Master/Master";
+import Master from "@/pages/Master";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
