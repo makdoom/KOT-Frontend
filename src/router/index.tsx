@@ -10,6 +10,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import DashboardLayout from "@/pages/DashboardLayout";
+import Master from "@/pages/Master/Master";
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,8 +22,8 @@ const Router = createBrowserRouter(
 
       <Route path="dashboard" element={<DashboardLayout />}>
         <Route index path="" element={<Dashboard />} />
-        <Route path="masters" element={<h1>Master</h1>} />
-        <Route path="company" element={<h1>Company</h1>} />
+        <Route path="master/:formName" element={<Master />} />
+        {/* <Route path="company" element={<h1>Company</h1>} /> */}
       </Route>
       <Route path="*" element={<NotFound />} />
     </>,
