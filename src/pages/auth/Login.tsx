@@ -8,6 +8,11 @@ import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { setAuth } from "@/store/authSlice";
+import { LoginResponseType } from "@/types/login.types";
 
 type LoginType = {
   username: string;
@@ -16,6 +21,8 @@ type LoginType = {
 
 const Login = () => {
   const navigate = useNavigate();
+  const auth = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
   const [passwordInputType, setPasswordInputType] = useState("password");
   const {
     register,
@@ -31,11 +38,21 @@ const Login = () => {
       ? setPasswordInputType("text")
       : setPasswordInputType("password");
 
-  const onSubmit = (data: LoginType) => {
-    console.log(data);
-    navigate("/dashboard");
+  const onSubmit = async (payload: LoginType) => {
+    console.log(payload);
+
+    const response = await axios.post<LoginResponseType>(
+      "/api/v1/auth/login",
+      payload,
+    );
+    const { statusCode, data } = response.data;
+    if (statusCode === 200) {
+      dispatch(setAuth(data));
+      navigate("/dashboard");
+    }
   };
 
+  console.log(auth);
   return (
     <div className="w-screen h-screen flex gap-2 bg-[#f8fafc]">
       <div className="flex-1 md:flex-[0.6] flex justify-center items-center">

@@ -20,10 +20,9 @@ export const SignupSchema = z
 
 export const LoginSchema = z.object({
   username: z.string().min(3, "Username is required"),
-  password: z
-    .string()
-    .min(8, "Password must be at least 8 characters long")
-    .max(50, "Password must be at most 50 characters long"),
+  password: z.string(),
+  // .min(8, "Password must be at least 8 characters long")
+  // .max(50, "Password must be at most 50 characters long"),
 });
 
 export const ForgotPasswordSchema = z.object({

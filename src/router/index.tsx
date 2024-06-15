@@ -22,8 +22,9 @@ const Router = createBrowserRouter(
 
       <Route path="dashboard" element={<DashboardLayout />}>
         <Route index path="" element={<Dashboard />} />
-        <Route path="master/:formName" element={<Master />} />
-        {/* <Route path="company" element={<h1>Company</h1>} /> */}
+        <Route path="masters/:formName" element={<Master />} />
+        <Route path="configurations/:formName" element={<Master />} />
+        <Route path="transactions/:formName" element={<Master />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </>,
